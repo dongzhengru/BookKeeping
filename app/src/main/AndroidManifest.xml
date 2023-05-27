@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xh229100226.bighomework">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.xh229100226.bighomework.RegisterActivity" />
+        <activity android:name="com.xh229100226.bighomework.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.xh229100226.bighomework.MainActivity" />
+        <activity android:name="com.xh229100226.bighomework.InsertIncomeActivity" />
+        <activity android:name="com.xh229100226.bighomework.QueryIncomeActivity" />
+        <activity android:name="com.xh229100226.bighomework.UpdateIncomeActivity" />
+        <activity android:name="com.xh229100226.bighomework.DeleteIncomeActivity" />
+        <activity android:name="com.xh229100226.bighomework.InsertOutActivity" />
+        <activity android:name="com.xh229100226.bighomework.DeleteOutActivity" />
+        <activity android:name="com.xh229100226.bighomework.QueryOutActivity" />
+        <activity android:name="com.xh229100226.bighomework.UpdateOutActivity" />
+    </application>
+</manifest>
