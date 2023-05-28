@@ -23,12 +23,12 @@ public class InsertIncomeActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initView() {
-        et_incomeid= (EditText) findViewById(R.id.et_incomeid);
-        et_money= (EditText) findViewById(R.id.et_money);
-        et_date= (EditText) findViewById(R.id.et_date);
-        et_type= (EditText) findViewById(R.id.et_type);
-        et_note= (EditText) findViewById(R.id.et_note);
-        btn_sureincome= (Button) findViewById(R.id.btn_sureincome);
+        et_incomeid= findViewById(R.id.et_incomeid);
+        et_money= findViewById(R.id.et_money);
+        et_date= findViewById(R.id.et_date);
+        et_type= findViewById(R.id.et_type);
+        et_note= findViewById(R.id.et_note);
+        btn_sureincome= findViewById(R.id.btn_sureincome);
         btn_sureincome.setOnClickListener(this);
     }
     public void onClick(View v){

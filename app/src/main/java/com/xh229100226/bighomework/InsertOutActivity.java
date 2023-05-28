@@ -23,12 +23,12 @@ public class InsertOutActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initView() {
-        et_payid= (EditText) findViewById(R.id.et_payid);
-        et_money2= (EditText) findViewById(R.id.et_money2);
-        et_date2= (EditText) findViewById(R.id.et_date2);
-        et_type2= (EditText) findViewById(R.id.et_type2);
-        et_note2= (EditText) findViewById(R.id.et_note2);
-        btn_surepay= (Button) findViewById(R.id.btn_surepay);
+        et_payid= findViewById(R.id.et_payid);
+        et_money2= findViewById(R.id.et_money2);
+        et_date2= findViewById(R.id.et_date2);
+        et_type2= findViewById(R.id.et_type2);
+        et_note2= findViewById(R.id.et_note2);
+        btn_surepay= findViewById(R.id.btn_surepay);
         btn_surepay.setOnClickListener(this);
     }
     public void onClick(View v){

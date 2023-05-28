@@ -26,18 +26,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        et_username = (EditText) findViewById(R.id.et_username);
-        et_userpwd = (EditText) findViewById(R.id.et_userpwd);
-        btn_login = (Button) findViewById(R.id.btn_login);
-        rememberpass = (CheckBox) findViewById(R.id.remember);
-        btn_register = (Button) findViewById(R.id.btn_register);
+        et_username = findViewById(R.id.et_username);
+        et_userpwd = findViewById(R.id.et_userpwd);
+        btn_login = findViewById(R.id.btn_login);
+        rememberpass = findViewById(R.id.remember);
+        btn_register = findViewById(R.id.btn_register);
 
-        btn_register.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
+        btn_register.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
         pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         boolean isRemember = pref.getBoolean("remember_password", false);
@@ -48,29 +45,26 @@ public class LoginActivity extends AppCompatActivity {
             et_userpwd.setText(password);
             rememberpass.setChecked(true);
         }
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String account = et_username.getText().toString();
-                String password = et_userpwd.getText().toString();
-                SharedPreferences pre = getSharedPreferences("MyShare", MODE_PRIVATE);
-                if (account.equals(pre.getString("userName", "")) && password.equals(pre.getString("userPass", ""))) {
-                    editor = pref.edit();
-                    if (rememberpass.isChecked()) {
-                        editor.putBoolean("remember_password", true);
-                        editor.putString("Name", account);
-                        editor.putString("Password", password);
-                        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_LONG).show();
-                    } else {
-                        editor.clear();
-                    }
-                    editor.commit();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+        btn_login.setOnClickListener(v -> {
+            String account = et_username.getText().toString();
+            String password = et_userpwd.getText().toString();
+            SharedPreferences pre = getSharedPreferences("MyShare", MODE_PRIVATE);
+            if (account.equals(pre.getString("userName", "")) && password.equals(pre.getString("userPass", ""))) {
+                editor = pref.edit();
+                if (rememberpass.isChecked()) {
+                    editor.putBoolean("remember_password", true);
+                    editor.putString("Name", account);
+                    editor.putString("Password", password);
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(LoginActivity.this, "用户名或密码不正确", Toast.LENGTH_LONG).show();
+                    editor.clear();
                 }
+                editor.commit();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(LoginActivity.this, "用户名或密码不正确", Toast.LENGTH_LONG).show();
             }
         });
     }

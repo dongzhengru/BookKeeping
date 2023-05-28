@@ -14,7 +14,6 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="30dp"
         android:src="@drawable/logo" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -114,7 +113,6 @@
             android:text="删除收入"
             android:textColor="#000000"
             android:textSize="25dp" />
-
         <Button
             android:id="@+id/btn_del2"
             android:layout_width="120dp"

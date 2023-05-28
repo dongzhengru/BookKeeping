@@ -25,16 +25,15 @@ public class DeleteIncomeActivity extends AppCompatActivity   implements View.On
     }
 
     private void initView() {
-        et_delid= (EditText) findViewById(R.id.et_delid);
-        et_delmoney= (EditText) findViewById(R.id.et_delmoney);
-        et_deldate= (EditText) findViewById(R.id.et_deldate);
-        et_deltype= (EditText) findViewById(R.id.et_deltype);
-        et_delnote= (EditText) findViewById(R.id.et_delnote);
-        btn_delSearch= (Button) findViewById(R.id.btn_search);
-        btn_delete= (Button) findViewById(R.id.btn_delete);
-
-        btn_delSearch.setOnClickListener((View.OnClickListener) this);
-        btn_delete.setOnClickListener((View.OnClickListener) this);
+        et_delid= findViewById(R.id.et_delid);
+        et_delmoney= findViewById(R.id.et_delmoney);
+        et_deldate= findViewById(R.id.et_deldate);
+        et_deltype= findViewById(R.id.et_deltype);
+        et_delnote= findViewById(R.id.et_delnote);
+        btn_delSearch= findViewById(R.id.btn_search);
+        btn_delete= findViewById(R.id.btn_delete);
+        btn_delSearch.setOnClickListener(this);
+        btn_delete.setOnClickListener(this);
 
     }
 
@@ -66,7 +65,7 @@ public class DeleteIncomeActivity extends AppCompatActivity   implements View.On
     }
 
     private void deleteOrder() {
-        Money o=new Money();
+        Money o = new Money();
         o.date=et_deldate.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();

@@ -24,17 +24,17 @@ public class UpdateOutActivity extends AppCompatActivity   implements View.OnCli
     }
 
     private void initView() {
-        et_orderid2= (EditText) findViewById(R.id.et_orderid2);
-        btn_search2= (Button) findViewById(R.id.btn_search2);
+        et_orderid2= findViewById(R.id.et_orderid2);
+        btn_search2= findViewById(R.id.btn_search2);
 
-        et_upmoney2= (EditText) findViewById(R.id.et_upmoney2);
-        et_update2= (EditText) findViewById(R.id.et_update2);
-        et_uptype2= (EditText) findViewById(R.id.et_uptype2);
-        et_upnote2= (EditText) findViewById(R.id.et_upnote2);
-        btn_edit2= (Button) findViewById(R.id.btn_edit2);
+        et_upmoney2= findViewById(R.id.et_upmoney2);
+        et_update2= findViewById(R.id.et_update2);
+        et_uptype2= findViewById(R.id.et_uptype2);
+        et_upnote2= findViewById(R.id.et_upnote2);
+        btn_edit2= findViewById(R.id.btn_edit2);
 
-        btn_search2.setOnClickListener((View.OnClickListener) this);
-        btn_edit2.setOnClickListener((View.OnClickListener) this);
+        btn_search2.setOnClickListener(this);
+        btn_edit2.setOnClickListener(this);
     }
 
 

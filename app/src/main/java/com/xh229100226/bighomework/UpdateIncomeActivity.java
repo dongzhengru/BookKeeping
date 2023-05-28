@@ -27,17 +27,17 @@ public class UpdateIncomeActivity extends AppCompatActivity  implements View.OnC
     }
 
     private void initView() {
-        et_orderid= (EditText) findViewById(R.id.et_orderid);
-        btn_search= (Button) findViewById(R.id.btn_search);
+        et_orderid= findViewById(R.id.et_orderid);
+        btn_search= findViewById(R.id.btn_search);
 
-        et_upmoney= (EditText) findViewById(R.id.et_upmoney);
-        et_update= (EditText) findViewById(R.id.et_update);
-        et_uptype= (EditText) findViewById(R.id.et_uptype);
-        et_upnote= (EditText) findViewById(R.id.et_upnote);
-        btn_edit= (Button) findViewById(R.id.btn_edit);
+        et_upmoney= findViewById(R.id.et_upmoney);
+        et_update= findViewById(R.id.et_update);
+        et_uptype= findViewById(R.id.et_uptype);
+        et_upnote= findViewById(R.id.et_upnote);
+        btn_edit= findViewById(R.id.btn_edit);
 
-        btn_search.setOnClickListener((View.OnClickListener) this);
-        btn_edit.setOnClickListener((View.OnClickListener) this);
+        btn_search.setOnClickListener(this);
+        btn_edit.setOnClickListener(this);
     }
 
 

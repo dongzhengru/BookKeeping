@@ -25,16 +25,16 @@ public class DeleteOutActivity extends AppCompatActivity implements View.OnClick
         }
 
     private void initView() {
-        et_delid2= (EditText) findViewById(R.id.et_delid2);
-        et_delmoney2= (EditText) findViewById(R.id.et_delmoney2);
-        et_deldate2= (EditText) findViewById(R.id.et_deldate2);
-        et_deltype2= (EditText) findViewById(R.id.et_deltype2);
-        et_delnote2= (EditText) findViewById(R.id.et_delnote2);
-        btn_delSearch2= (Button) findViewById(R.id.btn_search2);
-        btn_delete2= (Button) findViewById(R.id.btn_delete2);
+        et_delid2= findViewById(R.id.et_delid2);
+        et_delmoney2= findViewById(R.id.et_delmoney2);
+        et_deldate2= findViewById(R.id.et_deldate2);
+        et_deltype2= findViewById(R.id.et_deltype2);
+        et_delnote2= findViewById(R.id.et_delnote2);
+        btn_delSearch2= findViewById(R.id.btn_search2);
+        btn_delete2= findViewById(R.id.btn_delete2);
 
-        btn_delSearch2.setOnClickListener((View.OnClickListener) this);
-        btn_delete2.setOnClickListener((View.OnClickListener) this);
+        btn_delSearch2.setOnClickListener(this);
+        btn_delete2.setOnClickListener(this);
 
     }
 
