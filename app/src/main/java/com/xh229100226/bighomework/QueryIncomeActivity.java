@@ -1,6 +1,9 @@
 package com.xh229100226.bighomework;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -9,8 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class QueryIncomeActivity extends AppCompatActivity {
-    ListView listView=null;
-
+    RecyclerView recyclerView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +26,14 @@ public class QueryIncomeActivity extends AppCompatActivity {
         dao.open();
         List<Map<String,Object>> mOrderData=dao.getAllIncome();
         if (mOrderData != null && mOrderData.size() > 0) {
-            listView= findViewById(R.id.list_income);
             String[] from={"id","money","date","type","note"};
             int[] to={R.id.tv_lst_orderid,R.id.tv_lst_username,R.id.tv_lst_name,R.id.tv_lst_price,R.id.tv_lst_amount};
-            SimpleAdapter listItemAdapter=new SimpleAdapter(QueryIncomeActivity.this,mOrderData,R.layout.item_list,from,to);
-            listView.setAdapter(listItemAdapter);
+
+            MyAdapter listItemAdapter = new MyAdapter(mOrderData, R.layout.item_list, from, to);
+            recyclerView = findViewById(R.id.list_income1);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(listItemAdapter);
+
         }
         dao.close();
     }
