@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?> 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:layout_marginBottom="30dp"
         android:src="@drawable/logo"  />
     <EditText
-        android:id="@+id/et_payid"
+        android:id="@+id/insert_income_id"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
@@ -23,9 +23,9 @@
         android:textColor="#3F51B5"
         android:textColorHint="#696969"
         android:textSize="20sp"
-        android:hint="  请输入此支出编号" />
+        android:hint="  请输入此收入编号" />
     <EditText
-        android:id="@+id/et_money2"
+        android:id="@+id/insert_income_money"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
@@ -34,33 +34,33 @@
         android:textColor="#3F51B5"
         android:textColorHint="#696969"
         android:textSize="20sp"
-        android:hint="  请输入此支出金额" />
+        android:hint="  请输入此收入金额" />
     <EditText
-        android:id="@+id/et_date2"
+        android:id="@+id/insert_income_date"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:background="@drawable/edit_text"
-        android:hint="  请输入此支出时间"
+        android:hint="  请输入此收入时间"
         android:textColor="#3F51B5"
         android:textColorHint="#696969"
         android:textSize="20sp" />
     <EditText
-        android:id="@+id/et_type2"
+        android:id="@+id/insert_income_type"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:background="@drawable/edit_text"
-        android:hint="  支出类型"
+        android:hint="  收入类型"
         android:textColor="#3F51B5"
         android:textColorHint="#696969"
         android:textSize="20sp" />
     <EditText
-        android:id="@+id/et_note2"
+        android:id="@+id/insert_income_note"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
@@ -72,14 +72,14 @@
         android:textColorHint="#696969"
         android:textSize="20sp" />
     <Button
-        android:id="@+id/btn_surepay"
+        android:id="@+id/insert_income_insert"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_style"
-        android:text="确认支出"
+        android:text="确认收入"
         android:textColor="#696969"
         android:textSize="20sp"/>
 </LinearLayout>

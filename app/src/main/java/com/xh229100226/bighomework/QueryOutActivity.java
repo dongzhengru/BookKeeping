@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 
 import java.util.List;
@@ -18,7 +16,7 @@ public class QueryOutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_query_out);
+        setContentView(R.layout.query_out);
         setTitle("查询收支");
         initView();
     }

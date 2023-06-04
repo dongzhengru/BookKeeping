@@ -34,16 +34,16 @@ public class MoneyDAO {
     }
     public long addIncome(Money o) {
         ContentValues values = new ContentValues();
-        values.put("id", o.id);
-        values.put("money", o.money);
-        values.put("date", o.date);
-        values.put("type", o.type);
-        values.put("note", o.note);
-        return db.insert("tb_income", null, values);
+        values.put("id", o.income_id);
+        values.put("money", o.income_money);
+        values.put("date", o.income_date);
+        values.put("type", o.income_type);
+        values.put("note", o.income_note);
+        return db.insert("income", null, values);
     }
     public ArrayList<Map<String, Object>> getAllIncome() {
         ArrayList<Map<String, Object>> listOrders = new ArrayList<Map<String, Object>>();
-        Cursor cursor = db.query("tb_income", null, null, null, null, null,null);
+        Cursor cursor = db.query("income", null, null, null, null, null,null);
 
         int resultCounts = cursor.getCount();
         if (resultCounts == 0 ) {
@@ -62,40 +62,40 @@ public class MoneyDAO {
         }
     }
     public Money getOrders(String orderid) {
-        Cursor cursor = db.query("tb_income", null, "date=?", new String[]{orderid}, null, null, null);
+        Cursor cursor = db.query("income", null, "date=?", new String[]{orderid}, null, null, null);
         Money o = new Money();
         while (cursor.moveToNext()) {
-            o.id = cursor.getString(cursor.getColumnIndex("id"));
-            o.money= cursor.getString(cursor.getColumnIndex("money"));
-            o.date = cursor.getString(cursor.getColumnIndex("date"));
-            o.type = cursor.getString(cursor.getColumnIndex("type"));
-            o.note = cursor.getString(cursor.getColumnIndex("note"));
+            o.income_id = cursor.getString(cursor.getColumnIndex("id"));
+            o.income_money = cursor.getString(cursor.getColumnIndex("money"));
+            o.income_date = cursor.getString(cursor.getColumnIndex("date"));
+            o.income_type = cursor.getString(cursor.getColumnIndex("type"));
+            o.income_note = cursor.getString(cursor.getColumnIndex("note"));
         }
         return o;
     }
     public int deletOrders(Money o) {
-        return db.delete("tb_income", "date=?", new String[]{String.valueOf(o.date)});
+        return db.delete("income", "date=?", new String[]{String.valueOf(o.income_date)});
     }
     public int updateOrders(Money o) {
         ContentValues value = new ContentValues();
-        value.put("money", o.money);
-        value.put("id", o.id);
-        value.put("type", o.type);
-        value.put("note", o.note);
-        return db.update("tb_income", value, "date=?", new String[]{String.valueOf(o.date)});
+        value.put("money", o.income_money);
+        value.put("id", o.income_id);
+        value.put("type", o.income_type);
+        value.put("note", o.income_note);
+        return db.update("income", value, "date=?", new String[]{String.valueOf(o.income_date)});
     }
     public long addPay(Money o) {
         ContentValues values = new ContentValues();
-        values.put("id", o.id2);
-        values.put("money", o.money2);
-        values.put("date", o.date2);
-        values.put("type", o.type2);
-        values.put("note", o.note2);
-        return db.insert("tb_out", null, values);
+        values.put("id", o.out_id);
+        values.put("money", o.out_money);
+        values.put("date", o.out_date);
+        values.put("type", o.out_type);
+        values.put("note", o.out_note);
+        return db.insert("out", null, values);
     }
     public ArrayList<Map<String, Object>> getAllPay() {
         ArrayList<Map<String, Object>> listOrders = new ArrayList<Map<String, Object>>();
-        Cursor cursor = db.query("tb_out", null, null, null, null, null,null);
+        Cursor cursor = db.query("out", null, null, null, null, null,null);
 
         int resultCounts = cursor.getCount();
         if (resultCounts == 0 ) {
@@ -115,29 +115,29 @@ public class MoneyDAO {
     }
 
     public Money getPay(String orderid) {
-        Cursor cursor = db.query("tb_out", null, "date=?", new String[]{orderid}, null, null, null);
+        Cursor cursor = db.query("out", null, "date=?", new String[]{orderid}, null, null, null);
         Money o = new Money();
         while (cursor.moveToNext()) {
-            o.id2 = cursor.getString(cursor.getColumnIndex("id"));
-            o.money2= cursor.getString(cursor.getColumnIndex("money"));
-            o.date2 = cursor.getString(cursor.getColumnIndex("date"));
-            o.type2 = cursor.getString(cursor.getColumnIndex("type"));
-            o.note2 = cursor.getString(cursor.getColumnIndex("note"));
+            o.out_id = cursor.getString(cursor.getColumnIndex("id"));
+            o.out_money = cursor.getString(cursor.getColumnIndex("money"));
+            o.out_date = cursor.getString(cursor.getColumnIndex("date"));
+            o.out_type = cursor.getString(cursor.getColumnIndex("type"));
+            o.out_note = cursor.getString(cursor.getColumnIndex("note"));
         }
         return o;
     }
 
     public int updatePay(Money o) {
         ContentValues value = new ContentValues();
-        value.put("money", o.money2);
-        value.put("date", o.date2);
-        value.put("type", o.type2);
-        value.put("note", o.note2);
-        return db.update("tb_out", value, "date=?", new String[]{String.valueOf(o.date2)});
+        value.put("money", o.out_money);
+        value.put("date", o.out_date);
+        value.put("type", o.out_type);
+        value.put("note", o.out_note);
+        return db.update("out", value, "date=?", new String[]{String.valueOf(o.out_date)});
     }
 
     public int deletPay(Money o) {
-        return db.delete("tb_out", "date=?", new String[]{String.valueOf(o.date2)});
+        return db.delete("out", "date=?", new String[]{String.valueOf(o.out_date)});
     }
 
 

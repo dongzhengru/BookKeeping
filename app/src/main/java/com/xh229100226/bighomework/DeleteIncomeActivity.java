@@ -9,31 +9,31 @@ import android.widget.Toast;
 
 public class DeleteIncomeActivity extends AppCompatActivity   implements View.OnClickListener{
 
-    private Button btn_delSearch;
-    private EditText et_delid;
-    private EditText et_delmoney;
-    private EditText et_deldate;
-    private EditText et_deltype;
-    private EditText et_delnote;
-    private Button btn_delete;
+    private Button search;
+    private EditText del_id;
+    private EditText money;
+    private EditText date;
+    private EditText type;
+    private EditText note;
+    private Button delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_income);
+        setContentView(R.layout.delete_income);
         initView();
     }
 
     private void initView() {
-        et_delid= findViewById(R.id.et_delid);
-        et_delmoney= findViewById(R.id.et_delmoney);
-        et_deldate= findViewById(R.id.et_deldate);
-        et_deltype= findViewById(R.id.et_deltype);
-        et_delnote= findViewById(R.id.et_delnote);
-        btn_delSearch= findViewById(R.id.btn_search);
-        btn_delete= findViewById(R.id.btn_delete);
-        btn_delSearch.setOnClickListener(this);
-        btn_delete.setOnClickListener(this);
+        del_id = findViewById(R.id.del_income_id);
+        money = findViewById(R.id.del_income_money);
+        date = findViewById(R.id.del_income_date);
+        type = findViewById(R.id.del_income_type);
+        note = findViewById(R.id.del_income_note);
+        search = findViewById(R.id.del_income_search);
+        delete = findViewById(R.id.del_income_del);
+        search.setOnClickListener(this);
+        delete.setOnClickListener(this);
 
     }
 
@@ -42,10 +42,10 @@ public class DeleteIncomeActivity extends AppCompatActivity   implements View.On
 
         switch(v.getId())
         {
-            case R.id.btn_search:
+            case R.id.del_income_search:
                 searchOrder();
                 break;
-            case R.id.btn_delete:
+            case R.id.del_income_del:
                 deleteOrder();
                 break;
         }
@@ -53,20 +53,20 @@ public class DeleteIncomeActivity extends AppCompatActivity   implements View.On
     }
 
     private void searchOrder() {
-        String orderid=et_deldate.getText().toString().trim();
+        String orderid= date.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();
         Money o=dao.getOrders(orderid);
-        et_delmoney.setText(o.money);
-        et_delid.setText(o.id);
-        et_deltype.setText(o.type);
-        et_delnote.setText(o.note);
+        money.setText(o.income_money);
+        del_id.setText(o.income_id);
+        type.setText(o.income_type);
+        note.setText(o.income_note);
         dao.close();
     }
 
     private void deleteOrder() {
         Money o = new Money();
-        o.date=et_deldate.getText().toString().trim();
+        o.income_date = date.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();
         int result= dao.deletOrders(o);

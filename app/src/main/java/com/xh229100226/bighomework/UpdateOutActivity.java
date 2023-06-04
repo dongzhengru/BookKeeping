@@ -8,33 +8,33 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class UpdateOutActivity extends AppCompatActivity   implements View.OnClickListener{
-    private EditText et_orderid2;
-    private Button btn_search2;
-    private EditText et_upmoney2;
-    private EditText et_update2;
-    private EditText et_uptype2;
-    private EditText et_upnote2;
-    private Button btn_edit2;
+    private EditText update_id;
+    private Button search;
+    private EditText money;
+    private EditText date;
+    private EditText type;
+    private EditText note;
+    private Button edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_out);
+        setContentView(R.layout.update_out);
         setTitle("更新收支");
         initView();
     }
 
     private void initView() {
-        et_orderid2= findViewById(R.id.et_orderid2);
-        btn_search2= findViewById(R.id.btn_search2);
+        update_id = findViewById(R.id.et_orderid2);
+        search = findViewById(R.id.del_out_search);
 
-        et_upmoney2= findViewById(R.id.et_upmoney2);
-        et_update2= findViewById(R.id.et_update2);
-        et_uptype2= findViewById(R.id.et_uptype2);
-        et_upnote2= findViewById(R.id.et_upnote2);
-        btn_edit2= findViewById(R.id.btn_edit2);
+        money = findViewById(R.id.et_upmoney2);
+        date = findViewById(R.id.et_update2);
+        type = findViewById(R.id.et_uptype2);
+        note = findViewById(R.id.et_upnote2);
+        edit = findViewById(R.id.btn_edit2);
 
-        btn_search2.setOnClickListener(this);
-        btn_edit2.setOnClickListener(this);
+        search.setOnClickListener(this);
+        edit.setOnClickListener(this);
     }
 
 
@@ -42,7 +42,7 @@ public class UpdateOutActivity extends AppCompatActivity   implements View.OnCli
     public void onClick(View v) {
         switch(v.getId())
         {
-            case R.id.btn_search2:
+            case R.id.del_out_search:
                 searchOrder();
                 break;
             case R.id.btn_edit2:
@@ -52,23 +52,23 @@ public class UpdateOutActivity extends AppCompatActivity   implements View.OnCli
 
     }
     private void searchOrder() {
-        String orderid=et_update2.getText().toString().trim();
+        String orderid= date.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();
         Money o=dao.getPay(orderid);
-        et_upmoney2.setText(o.money2);
-        et_orderid2.setText(o.id2);
-        et_uptype2.setText(o.type2);
-        et_upnote2.setText(o.note2);
+        money.setText(o.out_money);
+        update_id.setText(o.out_id);
+        type.setText(o.out_type);
+        note.setText(o.out_note);
         dao.close();
     }
     private void updateOrder() {
         Money o=new Money();
-        o.id2 =et_orderid2.getText().toString().trim();
-        o.money2 =et_upmoney2.getText().toString().trim();
-        o.date2 =et_update2.getText().toString().trim();
-        o.type2 =et_uptype2.getText().toString().trim();
-        o.note2 =et_upnote2.getText().toString().trim();
+        o.out_id = update_id.getText().toString().trim();
+        o.out_money = money.getText().toString().trim();
+        o.out_date = date.getText().toString().trim();
+        o.out_type = type.getText().toString().trim();
+        o.out_note = note.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();
         long result= dao.updatePay(o);

@@ -8,41 +8,41 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class InsertIncomeActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText et_incomeid;
-    private EditText et_money;
-    private EditText et_date;
-    private EditText et_type;
-    private EditText et_note;
-    private Button btn_sureincome;
+    private EditText income_id;
+    private EditText money;
+    private EditText date;
+    private EditText type;
+    private EditText note;
+    private Button insert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insert_income);
+        setContentView(R.layout.insert_income);
         initView();
     }
 
     private void initView() {
-        et_incomeid= findViewById(R.id.et_incomeid);
-        et_money= findViewById(R.id.et_money);
-        et_date= findViewById(R.id.et_date);
-        et_type= findViewById(R.id.et_type);
-        et_note= findViewById(R.id.et_note);
-        btn_sureincome= findViewById(R.id.btn_sureincome);
-        btn_sureincome.setOnClickListener(this);
+        income_id = findViewById(R.id.insert_income_id);
+        money = findViewById(R.id.insert_income_money);
+        date = findViewById(R.id.insert_income_date);
+        type = findViewById(R.id.insert_income_type);
+        note = findViewById(R.id.insert_income_note);
+        insert = findViewById(R.id.insert_income_insert);
+        insert.setOnClickListener(this);
     }
     public void onClick(View v){
-        String id=et_incomeid.getText().toString().trim();
-        String money = et_money.getText().toString().trim();
-        String date = et_date.getText().toString().trim();
-        String type = et_type.getText().toString().trim();
-        String note = et_note.getText().toString();
+        String id= income_id.getText().toString().trim();
+        String money = this.money.getText().toString().trim();
+        String date = this.date.getText().toString().trim();
+        String type = this.type.getText().toString().trim();
+        String note = this.note.getText().toString();
         Money o =new Money();
-        o.id=id;
-        o.money=money;
-        o.date = date;
-        o.type = type;
-        o.note = note;
+        o.income_id =id;
+        o.income_money =money;
+        o.income_date = date;
+        o.income_type = type;
+        o.income_note = note;
         MoneyDAO dao = new MoneyDAO(getApplicationContext());
         dao.open();
         long result = dao.addIncome(o);

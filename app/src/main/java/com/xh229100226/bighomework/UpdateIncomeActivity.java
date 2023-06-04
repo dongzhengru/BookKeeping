@@ -9,35 +9,35 @@ import android.widget.Toast;
 
 
 public class UpdateIncomeActivity extends AppCompatActivity  implements View.OnClickListener{
-    private EditText et_orderid;
-    private Button btn_search;
+    private EditText update_id;
+    private Button search;
 
-    private EditText et_upmoney;
-    private EditText et_update;
-    private EditText et_uptype;
-    private EditText et_upnote;
+    private EditText money;
+    private EditText date;
+    private EditText type;
+    private EditText note;
 
-    private Button btn_edit;
+    private Button edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_income);
+        setContentView(R.layout.update_income);
         setTitle("更新收支");
         initView();
     }
 
     private void initView() {
-        et_orderid= findViewById(R.id.et_orderid);
-        btn_search= findViewById(R.id.btn_search);
+        update_id = findViewById(R.id.et_orderid);
+        search = findViewById(R.id.del_income_search);
 
-        et_upmoney= findViewById(R.id.et_upmoney);
-        et_update= findViewById(R.id.et_update);
-        et_uptype= findViewById(R.id.et_uptype);
-        et_upnote= findViewById(R.id.et_upnote);
-        btn_edit= findViewById(R.id.btn_edit);
+        money = findViewById(R.id.et_upmoney);
+        date = findViewById(R.id.et_update);
+        type = findViewById(R.id.et_uptype);
+        note = findViewById(R.id.et_upnote);
+        edit = findViewById(R.id.btn_edit);
 
-        btn_search.setOnClickListener(this);
-        btn_edit.setOnClickListener(this);
+        search.setOnClickListener(this);
+        edit.setOnClickListener(this);
     }
 
 
@@ -45,7 +45,7 @@ public class UpdateIncomeActivity extends AppCompatActivity  implements View.OnC
     public void onClick(View v) {
         switch(v.getId())
         {
-            case R.id.btn_search:
+            case R.id.del_income_search:
                 searchOrder();
                 break;
             case R.id.btn_edit:
@@ -55,23 +55,23 @@ public class UpdateIncomeActivity extends AppCompatActivity  implements View.OnC
 
     }
     private void searchOrder() {
-        String orderid=et_update.getText().toString().trim();
+        String orderid= date.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();
         Money o=dao.getOrders(orderid);
-        et_upmoney.setText(o.money);
-        et_orderid.setText(o.id);
-        et_uptype.setText(o.type);
-        et_upnote.setText(o.note);
+        money.setText(o.income_money);
+        update_id.setText(o.income_id);
+        type.setText(o.income_type);
+        note.setText(o.income_note);
         dao.close();
     }
     private void updateOrder() {
         Money o=new Money();
-        o.id=et_orderid.getText().toString().trim();
-        o.money=et_upmoney.getText().toString().trim();
-        o.date=et_update.getText().toString().trim();
-        o.type=et_uptype.getText().toString().trim();
-        o.note=et_upnote.getText().toString().trim();
+        o.income_id = update_id.getText().toString().trim();
+        o.income_money = money.getText().toString().trim();
+        o.income_date = date.getText().toString().trim();
+        o.income_type = type.getText().toString().trim();
+        o.income_note = note.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();
         long result= dao.updateOrders(o);

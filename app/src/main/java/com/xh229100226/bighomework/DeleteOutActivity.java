@@ -9,32 +9,32 @@ import android.widget.Toast;
 
 public class DeleteOutActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btn_delSearch2;
-    private EditText et_delid2;
-    private EditText et_delmoney2;
-    private EditText et_deldate2;
-    private EditText et_deltype2;
-    private EditText et_delnote2;
-    private Button btn_delete2;
+    private Button search;
+    private EditText del_id;
+    private EditText money;
+    private EditText date;
+    private EditText type;
+    private EditText note;
+    private Button delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_out);
+        setContentView(R.layout.delete_out);
         initView();
         }
 
     private void initView() {
-        et_delid2= findViewById(R.id.et_delid2);
-        et_delmoney2= findViewById(R.id.et_delmoney2);
-        et_deldate2= findViewById(R.id.et_deldate2);
-        et_deltype2= findViewById(R.id.et_deltype2);
-        et_delnote2= findViewById(R.id.et_delnote2);
-        btn_delSearch2= findViewById(R.id.btn_search2);
-        btn_delete2= findViewById(R.id.btn_delete2);
+        del_id = findViewById(R.id.del_out_id);
+        money = findViewById(R.id.del_out_money);
+        date = findViewById(R.id.del_out_date);
+        type = findViewById(R.id.del_out_type);
+        note = findViewById(R.id.del_out_note);
+        search = findViewById(R.id.del_out_search);
+        delete = findViewById(R.id.del_out_del);
 
-        btn_delSearch2.setOnClickListener(this);
-        btn_delete2.setOnClickListener(this);
+        search.setOnClickListener(this);
+        delete.setOnClickListener(this);
 
     }
 
@@ -43,10 +43,10 @@ public class DeleteOutActivity extends AppCompatActivity implements View.OnClick
 
         switch(v.getId())
         {
-            case R.id.btn_search2:
+            case R.id.del_out_search:
                 searchOrder();
                 break;
-            case R.id.btn_delete2:
+            case R.id.del_out_del:
                 deleteOrder();
                 break;
         }
@@ -54,20 +54,20 @@ public class DeleteOutActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void searchOrder() {
-        String orderid=et_deldate2.getText().toString().trim();
+        String orderid= date.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();
         Money o=dao.getPay(orderid);
-        et_delmoney2.setText(o.money2);
-        et_delid2.setText(o.id2);
-        et_deltype2.setText(o.type2);
-        et_delnote2.setText(o.note2);
+        money.setText(o.out_money);
+        del_id.setText(o.out_id);
+        type.setText(o.out_type);
+        note.setText(o.out_note);
         dao.close();
     }
 
     private void deleteOrder() {
         Money o=new Money();
-        o.date2=et_deldate2.getText().toString().trim();
+        o.out_date = date.getText().toString().trim();
         MoneyDAO dao=new MoneyDAO(getApplicationContext());
         dao.open();
         int result= dao.deletPay(o);

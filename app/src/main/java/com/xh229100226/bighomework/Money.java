@@ -1,15 +1,15 @@
 package com.xh229100226.bighomework;
 
 public class Money {
-    public String id;
-    public String money;
-    public String date;
-    public String type;
-    public String note;
-    public String id2;
-    public String money2;
-    public String date2;
-    public String type2;
-    public String note2;
+    public String income_id;
+    public String income_money;
+    public String income_date;
+    public String income_type;
+    public String income_note;
+    public String out_id;
+    public String out_money;
+    public String out_date;
+    public String out_type;
+    public String out_note;
 
 }

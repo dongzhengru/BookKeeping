@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +14,7 @@ public class QueryIncomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_query_income);
+        setContentView(R.layout.query_income);
         setTitle("查询收支");
         initView();
     }
